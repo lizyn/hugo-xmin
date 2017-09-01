@@ -6,6 +6,22 @@
 
 {{ .Content }}
 
+{{ range first 6 .Data.Pages }}
+    <article>
+      <!-- the title summary -->
+      <div>
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      </div>
+      {{ .Summary }}
+      {{ if .Truncated }}
+      <!-- a read more link if the summary is truncated... -->
+      <div>
+        <a href="{{ .RelPermalink }}">Read More…</a>
+      </div>
+      {{ end }}
+    </article>
+{{ end }}
+
 <ul>
   {{ range (where .Data.Pages "Section" "!=" "") }}
   <li>
