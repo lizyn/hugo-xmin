@@ -6,7 +6,7 @@
 
 {{ .Content }}
 
-{{ range first 6 (where .Data.Pages "Section" "=" "post") }}
+{{ range first 6 .Data.Pages }}
     <article>
       <!-- the title summary -->
       <div>
@@ -23,7 +23,7 @@
 {{ end }}
 
 <ul>
-  {{ range (where .Data.Pages "Section" "=" "post") }}
+  {{ range (where .Data.Pages "Section" "!=" "") }}
   <li>
     <span class="date">{{ .Date.Format "2006/01/02" }}</span>
     <a href="{{ .URL }}">{{ .Title }}</a>
