@@ -9,15 +9,11 @@
 {{ range first 6 (where .Data.Pages "Section" "=" "post") }}
     <article>
       <!-- the title summary -->
-      <div>
-        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-      </div>
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a><span class="datesum"><br>- {{ .Date.Format "Jan 02" }}</span></h3>
       {{ .Summary }}
       {{ if .Truncated }}
       <!-- a read more link if the summary is truncated... -->
-      <div>
-        <a href="{{ .RelPermalink }}">Read More…</a>
-      </div>
+      <a href="{{ .RelPermalink }}">Read More…</a>
       {{ end }}
     </article>
 {{ end }}
