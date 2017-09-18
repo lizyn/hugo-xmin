@@ -24,11 +24,20 @@
 {{ end }}
 
 <ul>
-  {{ range (where .Data.Pages "Section" "=" "post") }}
-  <li>
-    <span class="date">{{ .Date.Format "2006/01/02" }}</span>
-    <a href="{{ .URL }}">{{ .Title }}</a>
-  </li>
+  {{ if .IsHome }}
+    {{ range (where .Data.Pages "Section" "=" "post") }}
+    <li>
+      <span class="date">{{ .Date.Format "2006/01/02" }}</span>
+      <a href="{{ .URL }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+  {{ else }}
+    {{ range .Data.Pages }}
+    <li>
+      <span class="date">{{ .Date.Format "2006/01/02" }}</span>
+      <a href="{{ .URL }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
   {{ end }}
 </ul>
 
