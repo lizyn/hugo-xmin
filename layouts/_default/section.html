@@ -7,15 +7,20 @@
 {{ .Content }}
 
 {{ range first 6 .Data.Pages }}
-    <article>
-      <!-- the title summary -->
-      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a><span class="datesum"><br>- {{ .Date.Format "Jan 02" }}</span></h3>
+  <article>
+    <!-- the title summary -->
+    <h3>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <span class="datesum"><br>- {{ .Date.Format "Jan 02" }}</span>
+    </h3>
+    <div style="font-size:97%">
       {{ .Summary }}
       {{ if .Truncated }}
       <!-- a read more link if the summary is truncated... -->
       <a href="{{ .RelPermalink }}">Read More…</a>
       {{ end }}
-    </article>
+    </div>
+  </article>
 {{ end }}
 
 <ul>
