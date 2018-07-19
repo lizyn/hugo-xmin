@@ -9,7 +9,6 @@
 {{ if .IsHome }}
 {{ range first 6 (where .Data.Pages "Section" "=" "post") }}
   <article>
-    <!-- the title summary -->
     <h3>
       <a href="{{ .RelPermalink }}">{{ .Title }}</a>
       <span class="datesum"><br>- {{ .Date.Format "Jan 02" }}</span>
@@ -17,14 +16,13 @@
     <div class="sum", style="font-size:97%; margin-left:2%">
       <p>{{ .Summary }}</p>
       {{ if .Truncated }}
-      <!-- a read more link if the summary is truncated... -->
       <a href="{{ .RelPermalink }}">Read More…</a>
       {{ end }}
     </div>
   </article>
 {{ end }}
 {{ else }}
-{{ range first 6 (where .Data.Pages "Section" "!=" "azury") }}
+{{ range first 6 (where .Data.Pages "Section" "!=" "") }}
   <article>
     <h3>
       <a href="{{ .RelPermalink }}">{{ .Title }}</a>
@@ -49,7 +47,7 @@
     </li>
     {{ end }}
   {{ else }}
-    {{ range (where .Data.Pages "Section" "!=" "azury") }}
+    {{ range (where .Data.Pages "Section" "!=" "") }}
     <li>
       <span class="date">{{ .Date.Format "2006/01/02" }}</span>
       <a href="{{ .URL }}">{{ .Title }}</a>
