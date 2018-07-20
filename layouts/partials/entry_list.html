@@ -1,0 +1,18 @@
+{{ if .IsHome }}
+  {{ .Scratch.Set "eq" "=" }}
+  {{ .Scratch.Set "section" "post" }}
+{{ else }}
+  {{ .Scratch.Set "eq" "!=" }}
+  {{ .Scratch.Set "section" "" }}
+{{ end }}
+
+<ul>
+  {{ range (where .Pages "Section" (.Scratch.Get "eq") (.Scratch.Get "section")) }}
+  <li>
+    <span class="date">{{ .Date.Format "2006/01/02" }}</span>
+    <a href="{{ .URL }}">{{ .Title }}</a>
+  </li>
+  {{ end }}
+</ul>
+{{ .Scratch.Delete "eq" }}
+{{ .Scratch.Delete "section" }}

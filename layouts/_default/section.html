@@ -1,34 +1,12 @@
 {{ partial "header.html" . }}
 
-{{if not .IsHome }}
+{{ if not .IsHome }}
 <h1>{{ .Title }}</h1>
 {{ end }}
 
 {{ .Content }}
 
-{{ range first 6 .Data.Pages }}
-  <article>
-    <!-- the title summary -->
-    <h3>
-      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-      <span class="datesum"><br>- {{ .Date.Format "Jan 02" }}</span>
-    </h3>
-    <div class="sum", style="font-size:97%; margin-left:2%">
-      <p>{{ .Summary }}</p>
-      {{ if .Truncated }}
-      <a href="{{ .RelPermalink }}">Read More…</a>
-      {{ end }}
-    </div>
-  </article>
-{{ end }}
-
-<ul>
-  {{ range (where .Data.Pages "Section" "!=" "") }}
-  <li>
-    <span class="date">{{ .Date.Format "2006/01/02" }}</span>
-    <a href="{{ .URL }}">{{ .Title }}</a>
-  </li>
-  {{ end }}
-</ul>
+{{ partial "first_sum.html" . }}
+{{ partial "entry_list.html" . }}
 
 {{ partial "footer.html" . }}

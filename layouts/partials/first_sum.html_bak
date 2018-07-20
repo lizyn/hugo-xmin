@@ -1,0 +1,24 @@
+{{ if .IsHome }}
+  {{ .Scratch.Set "eq" "=" }}
+  {{ .Scratch.Set "section" "post" }}
+{{ else }}
+  {{ .Scratch.Set "eq" "!=" }}
+  {{ .Scratch.Set "section" "" }}
+{{ end }}
+
+{{ range first 6 (where .Pages "Section" (.Scratch.Get "eq") (.Scratch.Get "section")) }}
+  <article>
+    <h3>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <span class="datesum"><br>- {{ .Date.Format "Jan 02" }}</span>
+    </h3>
+    <div class="sum" style="font-size:97%; margin-left:2%">
+      <p>{{ .Summary }}</p>
+      {{ if .Truncated }}
+      <div style="margin-top: -1em"><a href="{{ .RelPermalink }}">Read More…</a></div>
+      {{ end }}
+    </div>
+  </article>
+{{ end }}
+{{ .Scratch.Delete "eq" }}
+{{ .Scratch.Delete "section" }}
