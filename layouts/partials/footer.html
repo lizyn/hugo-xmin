@@ -2,6 +2,7 @@
   {{ partial "foot_custom.html" . }}
   {{ with .Site.Params.footer }}
   <hr/>
+  <a id="me" href="#menu">&uarr;</a>&nbsp;&nbsp;
   {{ . | markdownify }}
   {{ end }}
   </footer>
