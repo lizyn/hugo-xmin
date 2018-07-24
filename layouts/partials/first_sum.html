@@ -12,7 +12,7 @@
     <a href="{{ .RelPermalink }}">{{ .Title }}</a>
     <span class="datesum"><br>- {{ .Date.Format "Jan 02" }}</span>
   </h3>
-  <div class="sum" style="margin-left:0.5%">
+  <div class="sum">
 {{ with .Description }}
   {{ $.Scratch.Set "summary" (markdownify .) }}
 {{ else }}
