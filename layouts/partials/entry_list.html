@@ -6,7 +6,7 @@
   {{ .Scratch.Set "section" "" }}
 {{ end }}
 
-<ul>
+<ul class="entry">
   {{ range (where .Pages "Section" (.Scratch.Get "eq") (.Scratch.Get "section")) }}
   <li>
     <span class="date">{{ .Date.Format "2006/01/02" }}</span>
